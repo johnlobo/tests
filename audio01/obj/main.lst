@@ -1,0 +1,222 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.8 #9946 (Mac OS X x86_64)
+                              4 ;--------------------------------------------------------
+                              5 	.module main
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _main
+                             12 	.globl _interruptHandler
+                             13 	.globl _cpct_akp_SFXPlay
+                             14 	.globl _cpct_akp_SFXInit
+                             15 	.globl _cpct_akp_stop
+                             16 	.globl _cpct_akp_musicPlay
+                             17 	.globl _cpct_akp_musicInit
+                             18 	.globl _cpct_getScreenPtr
+                             19 	.globl _cpct_drawStringM1
+                             20 	.globl _cpct_setDrawCharM1
+                             21 	.globl _cpct_isKeyPressed
+                             22 	.globl _cpct_scanKeyboard_if
+                             23 	.globl _cpct_setInterruptHandler
+                             24 	.globl _cpct_disableFirmware
+                             25 	.globl _n_interrupt
+                             26 ;--------------------------------------------------------
+                             27 ; special function registers
+                             28 ;--------------------------------------------------------
+                             29 ;--------------------------------------------------------
+                             30 ; ram data
+                             31 ;--------------------------------------------------------
+                             32 	.area _DATA
+   0000                      33 _n_interrupt::
+   0000                      34 	.ds 4
+                             35 ;--------------------------------------------------------
+                             36 ; ram data
+                             37 ;--------------------------------------------------------
+                             38 	.area _INITIALIZED
+                             39 ;--------------------------------------------------------
+                             40 ; absolute external ram data
+                             41 ;--------------------------------------------------------
+                             42 	.area _DABS (ABS)
+                             43 ;--------------------------------------------------------
+                             44 ; global & static initialisations
+                             45 ;--------------------------------------------------------
+                             46 	.area _HOME
+                             47 	.area _GSINIT
+                             48 	.area _GSFINAL
+                             49 	.area _GSINIT
+                             50 ;--------------------------------------------------------
+                             51 ; Home
+                             52 ;--------------------------------------------------------
+                             53 	.area _HOME
+                             54 	.area _HOME
+                             55 ;--------------------------------------------------------
+                             56 ; code
+                             57 ;--------------------------------------------------------
+                             58 	.area _CODE
+                             59 ;src/main.c:26: void interruptHandler(){
+                             60 ;	---------------------------------
+                             61 ; Function interruptHandler
+                             62 ; ---------------------------------
+   0000                      63 _interruptHandler::
+                             64 ;src/main.c:27: if (++n_interrupt == 6){
+   0000 FD 21r00r00   [14]   65 	ld	iy, #_n_interrupt
+   0004 FD 34 00      [23]   66 	inc	0 (iy)
+   0007 20 0D         [12]   67 	jr	NZ,00109$
+   0009 FD 34 01      [23]   68 	inc	1 (iy)
+   000C 20 08         [12]   69 	jr	NZ,00109$
+   000E FD 34 02      [23]   70 	inc	2 (iy)
+   0011 20 03         [12]   71 	jr	NZ,00109$
+   0013 FD 34 03      [23]   72 	inc	3 (iy)
+   0016                      73 00109$:
+   0016 FD 7E 00      [19]   74 	ld	a, 0 (iy)
+   0019 D6 06         [ 7]   75 	sub	a, #0x06
+   001B FD B6 01      [19]   76 	or	a, 1 (iy)
+   001E FD B6 02      [19]   77 	or	a, 2 (iy)
+   0021 FD B6 03      [19]   78 	or	a, 3 (iy)
+   0024 C0            [11]   79 	ret	NZ
+                             80 ;src/main.c:28: cpct_akp_musicPlay();
+   0025 CDr00r00      [17]   81 	call	_cpct_akp_musicPlay
+                             82 ;src/main.c:29: cpct_scanKeyboard_if();
+   0028 CDr00r00      [17]   83 	call	_cpct_scanKeyboard_if
+                             84 ;src/main.c:30: n_interrupt = 0;
+   002B AF            [ 4]   85 	xor	a, a
+   002C FD 21r00r00   [14]   86 	ld	iy, #_n_interrupt
+   0030 FD 77 00      [19]   87 	ld	0 (iy), a
+   0033 FD 77 01      [19]   88 	ld	1 (iy), a
+   0036 FD 77 02      [19]   89 	ld	2 (iy), a
+   0039 FD 77 03      [19]   90 	ld	3 (iy), a
+   003C C9            [10]   91 	ret
+                             92 ;src/main.c:34: void main(void) {
+                             93 ;	---------------------------------
+                             94 ; Function main
+                             95 ; ---------------------------------
+   003D                      96 _main::
+                             97 ;src/main.c:40: pvmem = cpct_getScreenPtr(CPCT_VMEM_START, 20, 96);
+   003D 21 14 60      [10]   98 	ld	hl, #0x6014
+   0040 E5            [11]   99 	push	hl
+   0041 21 00 C0      [10]  100 	ld	hl, #0xc000
+   0044 E5            [11]  101 	push	hl
+   0045 CDr00r00      [17]  102 	call	_cpct_getScreenPtr
+                            103 ;src/main.c:43: cpct_setDrawCharM1(1, 0);
+   0048 E5            [11]  104 	push	hl
+   0049 01 01 00      [10]  105 	ld	bc, #0x0001
+   004C C5            [11]  106 	push	bc
+   004D CDr00r00      [17]  107 	call	_cpct_setDrawCharM1
+   0050 E1            [10]  108 	pop	hl
+                            109 ;src/main.c:45: cpct_drawStringM1("Welcome to CPCtelera!", pvmem);
+   0051 01rFCr00      [10]  110 	ld	bc, #___str_0+0
+   0054 E5            [11]  111 	push	hl
+   0055 C5            [11]  112 	push	bc
+   0056 CDr00r00      [17]  113 	call	_cpct_drawStringM1
+                            114 ;src/main.c:48: n_interrupt = 0;
+   0059 AF            [ 4]  115 	xor	a, a
+   005A FD 21r00r00   [14]  116 	ld	iy, #_n_interrupt
+   005E FD 77 00      [19]  117 	ld	0 (iy), a
+   0061 FD 77 01      [19]  118 	ld	1 (iy), a
+   0064 FD 77 02      [19]  119 	ld	2 (iy), a
+   0067 FD 77 03      [19]  120 	ld	3 (iy), a
+                            121 ;src/main.c:49: cpct_disableFirmware();
+   006A CDr00r00      [17]  122 	call	_cpct_disableFirmware
+                            123 ;src/main.c:50: cpct_setInterruptHandler(&interruptHandler);
+   006D 21r00r00      [10]  124 	ld	hl, #_interruptHandler
+   0070 CDr00r00      [17]  125 	call	_cpct_setInterruptHandler
+                            126 ;src/main.c:52: cpct_akp_musicInit(fx_song);
+   0073 21r00r00      [10]  127 	ld	hl, #_fx_song
+   0076 E5            [11]  128 	push	hl
+   0077 CDr00r00      [17]  129 	call	_cpct_akp_musicInit
+                            130 ;src/main.c:53: cpct_akp_SFXInit(fx_song);
+   007A 21r00r00      [10]  131 	ld	hl, #_fx_song
+   007D E3            [19]  132 	ex	(sp),hl
+   007E CDr00r00      [17]  133 	call	_cpct_akp_SFXInit
+   0081 F1            [10]  134 	pop	af
+                            135 ;src/main.c:56: while (1){
+   0082                     136 00110$:
+                            137 ;src/main.c:57: if (cpct_isKeyPressed(Key_1))
+   0082 21 08 01      [10]  138 	ld	hl, #0x0108
+   0085 CDr00r00      [17]  139 	call	_cpct_isKeyPressed
+   0088 7D            [ 4]  140 	ld	a, l
+   0089 B7            [ 4]  141 	or	a, a
+   008A 28 17         [12]  142 	jr	Z,00102$
+                            143 ;src/main.c:58: cpct_akp_SFXPlay(1, 15, 50, 0, 0, AY_CHANNEL_ALL);
+   008C 3E 07         [ 7]  144 	ld	a, #0x07
+   008E F5            [11]  145 	push	af
+   008F 33            [ 6]  146 	inc	sp
+   0090 21 00 00      [10]  147 	ld	hl, #0x0000
+   0093 E5            [11]  148 	push	hl
+   0094 2E 32         [ 7]  149 	ld	l, #0x32
+   0096 E5            [11]  150 	push	hl
+   0097 21 01 0F      [10]  151 	ld	hl, #0x0f01
+   009A E5            [11]  152 	push	hl
+   009B CDr00r00      [17]  153 	call	_cpct_akp_SFXPlay
+   009E 21 07 00      [10]  154 	ld	hl, #7
+   00A1 39            [11]  155 	add	hl, sp
+   00A2 F9            [ 6]  156 	ld	sp, hl
+   00A3                     157 00102$:
+                            158 ;src/main.c:59: if (cpct_isKeyPressed(Key_2))
+   00A3 21 08 02      [10]  159 	ld	hl, #0x0208
+   00A6 CDr00r00      [17]  160 	call	_cpct_isKeyPressed
+   00A9 7D            [ 4]  161 	ld	a, l
+   00AA B7            [ 4]  162 	or	a, a
+   00AB 28 17         [12]  163 	jr	Z,00104$
+                            164 ;src/main.c:60: cpct_akp_SFXPlay(2, 15, 50, 0, 0, AY_CHANNEL_ALL);
+   00AD 3E 07         [ 7]  165 	ld	a, #0x07
+   00AF F5            [11]  166 	push	af
+   00B0 33            [ 6]  167 	inc	sp
+   00B1 21 00 00      [10]  168 	ld	hl, #0x0000
+   00B4 E5            [11]  169 	push	hl
+   00B5 2E 32         [ 7]  170 	ld	l, #0x32
+   00B7 E5            [11]  171 	push	hl
+   00B8 21 02 0F      [10]  172 	ld	hl, #0x0f02
+   00BB E5            [11]  173 	push	hl
+   00BC CDr00r00      [17]  174 	call	_cpct_akp_SFXPlay
+   00BF 21 07 00      [10]  175 	ld	hl, #7
+   00C2 39            [11]  176 	add	hl, sp
+   00C3 F9            [ 6]  177 	ld	sp, hl
+   00C4                     178 00104$:
+                            179 ;src/main.c:61: if (cpct_isKeyPressed(Key_3))
+   00C4 21 07 02      [10]  180 	ld	hl, #0x0207
+   00C7 CDr00r00      [17]  181 	call	_cpct_isKeyPressed
+   00CA 7D            [ 4]  182 	ld	a, l
+   00CB B7            [ 4]  183 	or	a, a
+   00CC 28 17         [12]  184 	jr	Z,00106$
+                            185 ;src/main.c:62: cpct_akp_SFXPlay(3, 15, 50, 0, 0, AY_CHANNEL_ALL);
+   00CE 3E 07         [ 7]  186 	ld	a, #0x07
+   00D0 F5            [11]  187 	push	af
+   00D1 33            [ 6]  188 	inc	sp
+   00D2 21 00 00      [10]  189 	ld	hl, #0x0000
+   00D5 E5            [11]  190 	push	hl
+   00D6 2E 32         [ 7]  191 	ld	l, #0x32
+   00D8 E5            [11]  192 	push	hl
+   00D9 21 03 0F      [10]  193 	ld	hl, #0x0f03
+   00DC E5            [11]  194 	push	hl
+   00DD CDr00r00      [17]  195 	call	_cpct_akp_SFXPlay
+   00E0 21 07 00      [10]  196 	ld	hl, #7
+   00E3 39            [11]  197 	add	hl, sp
+   00E4 F9            [ 6]  198 	ld	sp, hl
+   00E5                     199 00106$:
+                            200 ;src/main.c:63: if (cpct_isKeyPressed(Key_4)){
+   00E5 21 07 01      [10]  201 	ld	hl, #0x0107
+   00E8 CDr00r00      [17]  202 	call	_cpct_isKeyPressed
+   00EB 7D            [ 4]  203 	ld	a, l
+   00EC B7            [ 4]  204 	or	a, a
+   00ED 28 93         [12]  205 	jr	Z,00110$
+                            206 ;src/main.c:64: cpct_akp_stop();
+   00EF CDr00r00      [17]  207 	call	_cpct_akp_stop
+                            208 ;src/main.c:65: cpct_akp_musicInit(dr_song);
+   00F2 21r00r00      [10]  209 	ld	hl, #_dr_song
+   00F5 E5            [11]  210 	push	hl
+   00F6 CDr00r00      [17]  211 	call	_cpct_akp_musicInit
+   00F9 F1            [10]  212 	pop	af
+   00FA 18 86         [12]  213 	jr	00110$
+   00FC                     214 ___str_0:
+   00FC 57 65 6C 63 6F 6D   215 	.ascii "Welcome to CPCtelera!"
+        65 20 74 6F 20 43
+        50 43 74 65 6C 65
+        72 61 21
+   0111 00                  216 	.db 0x00
+                            217 	.area _CODE
+                            218 	.area _INITIALIZER
+                            219 	.area _CABS (ABS)

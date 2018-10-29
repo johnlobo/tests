@@ -1,0 +1,161 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           
+     00000000  l__CABS                         
+     00000000  l__DABS                         
+     00000000  l__GSFINAL                      
+     00000000  l__GSINIT                       
+     00000000  l__HOME                         
+     00000000  l__INITIALIZED                  
+     00000000  l__INITIALIZER                  
+     00000000  l___dr_song                     
+     00000000  l___fx_song                     
+     00000000  s__CABS                         
+     00000000  s__DABS                         
+     00000000  s___dr_song                     
+     00000000  s___dr_song0                    
+     00000000  s___fx_song                     
+     00000000  s___fx_song0                    
+     00000004  l__DATA                         
+     0000004C  l___fx_song0                    
+     00000657  l___dr_song0                    
+     00000AEA  l__CODE                         
+     00004000  s__CODE                         
+     00004AEA  s__DATA                         
+     00004AEE  s__GSFINAL                      
+     00004AEE  s__GSINIT                       
+     00004AEE  s__HOME                         
+     00004AEE  s__INITIALIZED                  
+     00004AEE  s__INITIALIZER                  
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00004000    00000AEA =        2794. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004000  _interruptHandler                  main
+     0000403D  _main                              main
+     00004112  _cpct_isKeyPressed                 cpct_keyboard
+     00004112  cpct_isKeyPressed_asm              cpct_keyboard
+     0000411E  _cpct_akp_digidrumStatus           cpct_audio
+     0000411F  _cpct_akp_songLoopTimes            cpct_audio
+     00004120  _cpct_akp_musicPlay                cpct_audio
+     00004120  cpct_akp_musicPlay_asm             cpct_audio
+     00004823  _cpct_akp_musicInit                cpct_audio
+     0000482A  cpct_akp_musicInit_asm             cpct_audio
+     00004883  _cpct_akp_stop                     cpct_audio
+     00004883  cpct_akp_stop_asm                  cpct_audio
+     00004896  _cpct_akp_SFXGetInstrument         cpct_audio
+     0000489B  cpct_akp_SFXGetInstrument_asm      cpct_audio
+     000048AF  _cpct_akp_SFXInit                  cpct_audio
+     000048B6  cpct_akp_SFXInit_asm               cpct_audio
+     000048BD  _cpct_akp_SFXStopAll               cpct_audio
+     000048BD  cpct_akp_SFXStopAll_asm            cpct_audio
+     000048CA  _cpct_akp_SFXPlay                  cpct_audio
+     000048DC  cpct_akp_SFXPlay_asm               cpct_audio
+     00004929  _cpct_akp_SFXStop                  cpct_audio
+     0000492E  cpct_akp_SFXStop_asm               cpct_audio
+     00004947  _cpct_drawStringM1                 cpct_strings
+     00004977  cpct_drawCharM1_inner_asm          cpct_strings
+     000049B7  cpct_char2pxM1                     cpct_strings
+     000049C7  _cpct_keyboardStatusBuffer         cpct_keyboard
+     000049D1  _cpct_scanKeyboard_if              cpct_keyboard
+     000049D1  cpct_scanKeyboard_if_asm           cpct_keyboard
+     00004A39  _cpct_disableFirmware              cpct_firmware
+     00004A39  _cpct_removeInterruptHandler       cpct_firmware
+     00004A39  cpct_disableFirmware_asm           cpct_firmware
+     00004A39  cpct_removeInterruptHandler_asm    cpct_firmware
+     00004A49  _cpct_mode_rom_status              cpct_firmware
+     00004A4A  _cpct_getScreenPtr                 cpct_video
+     00004A6A  _cpct_setDrawCharM1                cpct_strings
+     00004ABE  _cpct_setInterruptHandler          cpct_firmware
+     00004ABE  cpct_setInterruptHandler_asm       cpct_firmware
+     00004ACF  cpct_safeInterruptHandlerHook      cpct_firmware
+     00004AE6  dc_mode1_ct                        
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+__fx_song0                          00000000    0000004C =          76. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00009000  _fx_song                           
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+__dr_song0                          00000000    00000657 =        1623. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00008000  _dr_song                           
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_DATA                               00004AEA    00000004 =           4. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004AEA  _n_interrupt                       main
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+
+Files Linked                              [ module(s) ]
+
+obj/fx02.rel                              [  ]
+obj/dr07.rel                              [  ]
+obj/main.rel                              [ main ]
+
+
+Libraries Linked                          [ object file ]
+
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_isKeyPressed.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ arkostracker.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawStringM1_cbindings.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawCharM1_inner.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ keyboard.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_scanKeyboard_if.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_removeInterruptHandler.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpc_mode_rom_status.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_getScreenPtr_cbindings.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setDrawCharM1_cbindings.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_setInterruptHandler.rel ]
+/Users/david/Documents/retro/proyectos/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_dc_mode1_ct.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+
+User Base Address Definitions
+
+_CODE = 0x4000
+_DATA = 0x0000
+
+
